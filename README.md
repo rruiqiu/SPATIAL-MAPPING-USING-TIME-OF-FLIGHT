@@ -39,7 +39,7 @@ The 28BYJ-48 stepper motor is driven by the VMA401-ULN2003 interface board. It i
 
 **Block Diagram** 
 
-*Device Set*  *up  PC Display Screenshot ![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.001.png)![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.002.jpeg)![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.003.png)![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.004.jpeg)![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.005.jpeg)*
+*Device Set*  *up  PC Display Screenshot ![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.001.png)![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.002.jpeg)![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.003.png)![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.004.jpeg)![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.005.jpeg)*
 
 *Device Setup* 
 
@@ -75,7 +75,7 @@ The 28BYJ-48 stepper motor is driven by the VMA401-ULN2003 interface board. It i
 
 To measure the planar spatial distance, the VL53L1X Time of Flight (ToF) sensor will be used and predesigned on a breakout board as shown in the picture below. The sensor 
 
-is mounted to a stepper motor ![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.006.jpeg)following the rotation motion of  the  motor.  As  an  output high from the push button is being  detected,  the  whole system will start working. The microcontroller  will  first initialize  the  sensor  to  get ready for the ranging process, 
+is mounted to a stepper motor ![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.006.jpeg)following the rotation motion of  the  motor.  As  an  output high from the push button is being  detected,  the  whole system will start working. The microcontroller  will  first initialize  the  sensor  to  get ready for the ranging process, 
 
 as the ranging process finishes. The  stepper  motor  will  start rotating  22.5  degrees  in  a counterclockwise direction 16 
 
@@ -107,9 +107,9 @@ The speed of light is expressed as *c* and is a constant value equal to 299,792,
 
 To  interact  with  the  VL53L1x,  the  manufacturer(ST)  provides  an  application programming interface(API). By correctly configuring the initializing of the sensor by setting API functions on the microcontroller, the distance data will be transferred one at a time after the motor 22.5degrees via I2C. Below is a basic flow chart to use the API. 
 
-Those are mandatory functions needed to be ![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.007.jpeg)![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.008.png)enabled for the microcontroller initialize. 
+Those are mandatory functions needed to be ![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.007.jpeg)![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.008.png)enabled for the microcontroller initialize. 
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.009.png)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.009.png)
 
 The microcontroller will communicate through UART by setting the same BAUD rate 115200 on PC. The PC will synchronize the data instantly by using python to decode the measured distance into string format. It is important to notice that the string format need to be converted into integer or float data type to perform the math operation. This can be simply done by using int(measured\_distance). 
 
@@ -143,13 +143,13 @@ To visualize the point cloud, the following command can be used.
 
 o3d.visualization.draw\_geometries([point\_cloud\_array]) (Here is an example of the data point cloud graph) 
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.010.png)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.010.png)
 
 To visualize those data points better and construct a 3D model. LineSet() function from the  Open3D  module  can  be  used  to  connect  each  data  points.  To  avoid  directly manipulate the raw distance data, each distance data will be assigned an index number corresponding their original position in the data point cloud. The idea of connecting each point is to connect the plane separately. Firstly, because there are 16 rotations within one cycle, there will be 16 points in the y-z plane within the same x. By following the logic that connect point one to point two and point two to point three by using lines. This will construct a 2D planar graph of the y-z plane. After finish constructing the y-z plane line connections. Their vertices connections between each y-z plane follow the x orthogonal can use the same logic. It is important to notice since the rotation is in counter-clockwise first then into clockwise and following the opposite direction; the assigned first index will be connected to the thirtieth index which is the last vertice of the second rotator motion. And the last index of the first rotation will connect to the first index of the second rotation. 
 
 Each line connections assigned can be used lines.append() to add at the last element of the array. By performing the below command, it will map the lines to 3d coordinate vertices. 
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.011.png)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.011.png)
 
 Finally, the finished 3D model can be visualized through the previous command but with a line set parameter. 
 
@@ -157,7 +157,7 @@ o3d.visualization.draw\_geometries([line\_set])
 
 Below is a finished example of 3D-constructed model for the hallway. 
 
-*Hallway  Front View Side View![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.012.jpeg)![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.013.jpeg)![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.014.jpeg)*
+*Hallway  Front View Side View![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.012.jpeg)![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.013.jpeg)![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.014.jpeg)*
 
 ***Applications*** 
 
@@ -193,7 +193,7 @@ Here is an application of how this device is acquiring signal and mapping the 3D
 
 [A finished 3D model graph can be found under the[ Visualization.](#_page6_x87.00_y352.92)] 
 
-***User Quick Guide  ![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.015.png)***
+***User Quick Guide  ![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.015.png)***
 
 1. Plug in the micro-c cable to microcontroller  and USB-A cable to the PC. 
 1. Check there is only one status LED besides   the chip is on.  
@@ -202,50 +202,50 @@ Here is an application of how this device is acquiring signal and mapping the 3D
 1. Edit the provided Python Program through IDLE. (You need to use Python version 3.6-3.9 to use the Open3D, a supported python version can be downloaded from [https://www.python.org/downloads/release/python-3911/ ](https://www.python.org/downloads/release/python-3911/)) 
 1. To check the python installed correctly, go to CMD and type python. You should see this below message is shown.  
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.016.png)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.016.png)
 
 7. Type exit () command to exit the python. Type - pip install numpy - into the command. 
 
 The following message should show successfully 
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.017.png)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.017.png)
 
 8. Type - pip install pyserial – into command. 
 
 \- pip install open3D – into command.  The installed successfully message should show for both commands. 
 
 9. The Python environment is setup successfully. 
-9. Find the user person computer port.  ![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.018.png)
+9. Find the user person computer port.  ![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.018.png)
 9. Open device Manager.  
 9. Under Ports(COM & LPT).  
 9. Find the XDS110 User UART.  
 9. Write down the port number besides the UART. (Each PC can differ) 
 9. Go to the python program line 17, change the Port number for your personal PC. 
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.019.png)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.019.png)
 
 16. Check if the baudrate is setting to 115200 as same as the MSP432E401Y MCU. 
 16. Run the python program and you should see the following message. 
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.020.png)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.020.png)
 
 18. Push the button once and the LED D2 will turn on to initialize the ports and sensor. 
 18. Press Enter on Python program to start communication. 
-18. After five seconds, you should see from the python program that ranging data is being synchronized one at a time and   ![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.021.png)print as shown.   
+18. After five seconds, you should see from the python program that ranging data is being synchronized one at a time and   ![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.021.png)print as shown.   
 18. The stepper motor will flash the LED   D2 for each 22.5 rotation.  
 18. After 16 distance synchronization, the device will wait for 10seconds to change the x position by 1meters. (The x distance needs to be changed by hands which means you need to mark the predefined x locations and move the device into the next location after one rotation.) 
 18. The device will store 64 distance measurements within four axis and require three x positions changes manipulated by hands. 
 18. Python program will show the data point cloud graph. 
 18. Exit the data point cloud graph and you should see a 3D model. You can drag the 3D model to get the best viewing angles of the hallway. An example of a 3D model is shown below. 
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.022.jpeg)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.022.jpeg)
 
 An example of 3D constructed hallway
 
 ***Limitations*** 
 
 1) The Cortex-M4F Floating-Point Unit (FPU) can fully support **single-precision** add, subtract, multiply, divide, multiply and accumulate, and square root operations. t also provides conversions between fixed-point and floating-point data formats, and floating-point constant instructions. The FPU provides floating-point computation functionality that is compliant with the ANSI/IEEE Std 754-2008, IEEE Standard for Binary Floating-Point Arithmetic, referred to as the IEEE 754 standard. The FPU's single-precision extension registers can also be accessed as 16 doubleword registers  for  load,  store,  and  move  operations.[5]  The  microcontroller  is  also capable to support trigonometric functions, but it is important to notice both the trigonometric calculation of microcontroller and python required the degree convert to radians. This can be done by using the formula. 
-- ×![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.023.png)
+- ×![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.023.png)
 
 180
 
@@ -257,7 +257,7 @@ However, there is a limitation that the microcontroller is performing the single
 
 3.5
 
-- =  = = 8.54 × 10−4![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.024.png)
+- =  = = 8.54 × 10−4![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.024.png)
   2  212
 3) The maximum standard serial communication rate to implement with the PC is 128000 bits per second. This can be verified in the device manager -> Ports -> User UART (COM3,may differ) -> Right Click -> Properties -> Port Settings -> Bits per second. The default is 9600 bits per second, but the user can select up to 128000bps. 
 3) The microcontroller and the ToF modules are using I2C communication method to realize data transfer. The I2C bus on the VL53L1X has a maximum speed of 400 kbits/s and uses a device address of 0x52. 
@@ -270,7 +270,7 @@ That is the reason we need set the SystickWait10ms() function is equal to the 10
 
 ***Circuit Schematic*** 
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.025.jpeg)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.025.jpeg)
 
 ***References*** 
 
