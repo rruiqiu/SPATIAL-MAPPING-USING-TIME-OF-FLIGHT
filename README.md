@@ -282,8 +282,8 @@ That is the reason we need set the SystickWait10ms() function is equal to the 10
 
 ***Flowcharts*** 
 
-**Microcontroller ![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.026.jpeg)**
+**Microcontroller ![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.026.jpeg)**
 
 **Python Program**  
 
-![](Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.027.jpeg)
+![](img/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.027.jpeg)
