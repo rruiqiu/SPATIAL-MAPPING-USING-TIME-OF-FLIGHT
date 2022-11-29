@@ -49,23 +49,23 @@ The 28BYJ-48 stepper motor is driven by the VMA401-ULN2003 interface board. It i
 
 ## Block Diagram
 
-![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.005](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.005.jpeg)
+![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.005](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.005.jpeg)
 
 Device Setup:
 
-![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.002](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.002.jpeg)
+![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.002](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.002.jpeg)
 
 PC Display Screenshot:
 
-![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.004](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.004.jpeg)
+![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.004](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.004.jpeg)
 
 ## **Device Characteristic Table**
 
-![Screenshot 2022-11-29 at 4.16.04 PM](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Screenshot 2022-11-29 at 4.16.04 PM.png)
+![Screenshot 2022-11-29 at 4.16.04 PM](/assets/Screenshot 2022-11-29 at 4.16.04 PM.png)
 
 ## **Detailed Description**
 
-To measure the planar spatial distance, the VL53L1X Time of Flight (ToF) sensor will be used and predesigned on a breakout board as shown in the picture below. The sensor is mounted to a stepper motor following the rotation motion of the motor. As an output high from the push button is being detected, the whole system will start working. The microcontroller will first initialize the sensor to get ready for the ranging process,as the ranging process finishes. The stepper motor will start rotating 22.5 degrees in a counterclockwise direction 16 times to finish a one 360 rotation. In each rotation, it will be used Systick_wait() function to wait for 40ms to finish a series of tasks. The microcontroller will get the ranging data (measured distance) from the sensor via I2C and communicate the microcontroller to the PC through UART to allow the PC to print the measured distance in Python. This design will perform four rotations in either counterclockwise or clockwise direction to avoid the wire wrapping together during the rotation. There will be a total of 64 ranging data (measured distance) to pass from the sensor through the microcontroller to the PC for each 22.5degrees. The data will be transferred one at a time and it can be visualized in real-time through python. For each data transfer, the python algorithm will be used to convert the measured distance and store them in the data point cloud for future data visualization.![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.006](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.006.jpeg)
+To measure the planar spatial distance, the VL53L1X Time of Flight (ToF) sensor will be used and predesigned on a breakout board as shown in the picture below. The sensor is mounted to a stepper motor following the rotation motion of the motor. As an output high from the push button is being detected, the whole system will start working. The microcontroller will first initialize the sensor to get ready for the ranging process,as the ranging process finishes. The stepper motor will start rotating 22.5 degrees in a counterclockwise direction 16 times to finish a one 360 rotation. In each rotation, it will be used Systick_wait() function to wait for 40ms to finish a series of tasks. The microcontroller will get the ranging data (measured distance) from the sensor via I2C and communicate the microcontroller to the PC through UART to allow the PC to print the measured distance in Python. This design will perform four rotations in either counterclockwise or clockwise direction to avoid the wire wrapping together during the rotation. There will be a total of 64 ranging data (measured distance) to pass from the sensor through the microcontroller to the PC for each 22.5degrees. The data will be transferred one at a time and it can be visualized in real-time through python. For each data transfer, the python algorithm will be used to convert the measured distance and store them in the data point cloud for future data visualization.![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.006](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.006.jpeg)
 
 The circuit schematic of the device can be found [here](#Circuit Schematics).
 
@@ -87,7 +87,7 @@ To successfully measure the distance from the detected object to the sensor. The
 
 The speed of light is expressed as *c* and is a constant value equal to 299,792,458m/s. To interact with the VL53L1x, the manufacturer(ST) provides an application programming interface(API). By correctly configuring the initializing of the sensor by setting API functions on the microcontroller, the distance data will be transferred one at a time after the motor 22.5degrees via I2C. Below is a basic flow chart to use the API.
 
-![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.007](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.007.jpeg)
+![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.007](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.007.jpeg)
 
 The microcontroller will communicate through UART by setting the same BAUD rate 115200 on PC. The PC will synchronize the data instantly by using python to decode the measured distance into string format. It is important to notice that the string format need to be converted into integer or float data type to perform the math operation. This can be simply done by using int(measured_distance).
 
@@ -122,13 +122,13 @@ To visualize the point cloud, the following command can be used.
 
 (Here is an example of the data point cloud graph)
 
-![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.010](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.010.png)
+![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.010](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.010.png)
 
 To visualize those data points better and construct a 3D model. LineSet() function from the Open3D module can be used to connect each data points. To avoid directly manipulate the raw distance data, each distance data will be assigned an index number corresponding their original position in the data point cloud. The idea of connecting each point is to connect the plane separately. Firstly, because there are 16 rotations within one cycle, there will be 16 points in the y-z plane within the same x. By following the logic that connect point one to point two and point two to point three by using lines. This will construct a 2D planar graph of the y-z plane. After finish constructing the y-z plane line connections. Their vertices connections between each y-z plane follow the x orthogonal can use the same logic. It is important to notice since the rotation is in counter-clockwise first then into clockwise and following the opposite direction; the assigned first index will be connected to the thirtieth index which is the last vertice of the second rotator motion. And the last index of the first rotation will connect to the first index of the second rotation.
 
 Each line connections assigned can be used lines.append() to add at the last element of the array. By performing the below command, it will map the lines to 3d coordinate vertices.
 
-![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.011](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.011.png)
+![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.011](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.011.png)
 
 Finally, the finished 3D model can be visualized through the previous command but with a line set parameter.
 
@@ -136,7 +136,7 @@ Finally, the finished 3D model can be visualized through the previous command bu
 
 Below is a finished example of 3D-constructed model for the hallway.
 
-![](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Screenshot 2022-11-29 at 5.20.11 PM.png)
+![](/assets/Screenshot 2022-11-29 at 5.20.11 PM.png)
 
 ## **Applications**
 
@@ -221,7 +221,7 @@ Below is a finished example of 3D-constructed model for the hallway.
 ## **User Quick Guide**
 
 1. Plug in the micro-c cable to microcontroller and USB-A cable to the PC.
-   ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.015](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.015-9761180.png)
+   ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.015](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.015-9761180.png)
 
 2. Check there is only one status LED besides the chip is on.
 
@@ -238,12 +238,12 @@ Below is a finished example of 3D-constructed model for the hallway.
 6. To check the python installed correctly, go to CMD and type python. You should
 
    see this below message is shown.
-   ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.016](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.016-9761200.png)
+   ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.016](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.016-9761200.png)
 
 7. Type exit () command to exit the python. Type - pip install numpy - into the command.
 
    The following message should show successfully
-   ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.017](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.017-9761230.png)
+   ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.017](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.017-9761230.png)
 
 8. Type - pip install pyserial – into command.
     \- pip install open3D – into command.
@@ -258,24 +258,24 @@ Below is a finished example of 3D-constructed model for the hallway.
 12. Under Ports(COM & LPT).
 
 13. Find the XDS110 User UART.
-    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.018](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.018.png)
+    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.018](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.018.png)
 
 14. Write down the port number besides the UART. (Each PC can differ)
 
 15. Go to the python program line 17, change the Port number for your personal PC.
-    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.019](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.019.png)
+    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.019](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.019.png)
 
 16. Check if the baudrate is setting to 115200 as same as the MSP432E401Y MCU.
 
 17. Run the python program and you should see the following message.
-    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.020](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.020.png)
+    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.020](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.020.png)
 
 18. Push the button once and the LED D2 will turn on to initialize the ports and sensor.
 
 19. Press Enter on Python program to start communication.
 
 20. After five seconds, you should see from the python program that ranging data is being synchronized one at a time and print as shown.
-    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.021](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.021.png)
+    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.021](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.021.png)
 
 21. The stepper motor will flash the LED
 
@@ -293,7 +293,7 @@ Below is a finished example of 3D-constructed model for the hallway.
 
     3D model to get the best viewing angles of the hallway. An example of a 3D model is shown below.
 
-    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.022](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.022.jpeg)
+    ![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.022](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.022.jpeg)
 
 ​																	An example of 3D constructed hallway
 
@@ -325,7 +325,7 @@ $$
 
 ## **Circuit Schematic**
 
-![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.025](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.025.jpeg)
+![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.025](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.025.jpeg)
 
 ## **References**
 
@@ -346,8 +346,8 @@ $$
 
 ### **Microcontroller**
 
-![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.026](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.026.jpeg)
+![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.026](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.026.jpeg)
 
 ### **Python Program**
 
-![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.027](/Users/richardqiu/Desktop/SPATIAL-MAPPING-USING-TIME-OF-FLIGHT/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.027.jpeg)
+![Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.027](/assets/Aspose.Words.ffaede76-6756-4ac4-879d-8b86fb4cc76b.027.jpeg)
