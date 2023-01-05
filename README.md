@@ -61,7 +61,7 @@ PC Display Screenshot:
 
 ## **Device Characteristic Table**
 
-![Screenshot 2022-11-29 at 4.16.04 PM](/assets/Screenshot 2022-11-29 at 4.16.04 PM.png)
+![Screenshot 2022-11-29 at 4.16.04 PM](/assets/devicechar.png)
 
 ## **Detailed Description**
 
@@ -136,7 +136,7 @@ Finally, the finished 3D model can be visualized through the previous command bu
 
 Below is a finished example of 3D-constructed model for the hallway.
 
-![](/assets/Screenshot 2022-11-29 at 5.20.11 PM.png)
+![](/assets/view.png)
 
 ## **Applications**
 
